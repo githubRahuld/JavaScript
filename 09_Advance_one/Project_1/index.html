@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>User Info</title>
+  </head>
+  <body>
+    <div class="card">
+      <div id="img">
+        <img src="" alt="" id="userDP" style="width: 100%" alt="avatar" />
+      </div>
+      <div class="container">
+        <h4 id="name">Name</h4>
+        <p id="followerCount">Followers</p>
+      </div>
+      <button id="btn">Get info</button>
+    </div>
+  </body>
+
+  <script>
+    const userDP = document.getElementById("img");
+    const userName = document.getElementById("name");
+    const countFollowers = document.getElementById("followerCount");
+    const btn = document.getElementById("btn");
+
+    // It has 4 state
+    const myURL = "https://api.github.com/users/hiteshchoudhary";
+    const xhr = new XMLHttpRequest();
+
+    xhr.open("GET", myURL);
+
+    xhr.onreadystatechange = function () {
+      console.log(xhr.readyState); //4
+      //   this.responseText => return string
+      // JSON.parse => converted string  into json object
+      const data = JSON.parse(this.responseText);
+      if (xhr.readyState === 4) {
+        console.log(data); //whole data
+        console.log(data.followers); //followers count
+        console.log(data.avatar_url); // DP
+      }
+
+      function showInfo() {
+        userName.innerHTML = data.name;
+        countFollowers.innerHTML = data.followers;
+        // userDP.innerHTML = data.avatar_url;
+        userDP.innerHTML = ` <img src="${data.avatar_url}" alt="" id="userDP" style="width: 30%" alt="avatar" />`;
+      }
+      btn.addEventListener("click", showInfo);
+    };
+    xhr.send();
+  </script>
+</html>

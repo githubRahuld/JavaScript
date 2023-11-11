@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Set Attribute</title>
+  </head>
+  <body style="background-color: #212121; color: #fff"></body>
+  <script>
+    const div = document.createElement("div");
+    div.className = "main";
+    div.id = Math.round(Math.random() * 10 + 1);
+    div.setAttribute("title", "generate Title"); //attributes are in key value pair
+    div.setAttribute("color", "green");
+    div.style.backgroundColor = "orange";
+    div.style.padding = "12px";
+    // div.innerHTML = "Learning DOM";
+    const addText = document.createTextNode("Hellow learners"); //create a text Node
+    div.appendChild(addText); //add text to div
+
+    document.body.appendChild(div); //add div to body
+    console.log(div);
+  </script>
+</html>

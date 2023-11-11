@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XML Request</title>
+  </head>
+  <body></body>
+
+  <script>
+    // It has 4 state
+    const myURL = "https://api.github.com/users/hiteshchoudhary";
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", myURL);
+    xhr.onreadystatechange = function () {
+      console.log(xhr.readyState); //4
+      //   this.responseText => return string
+      // JSON.parse => converted string  into json object
+      const data = JSON.parse(this.responseText);
+      console.log(data); //whole data
+      console.log(data.followers); //followers count
+      console.log(data.avatar_url); // DP
+    };
+    xhr.send();
+  </script>
+</html>

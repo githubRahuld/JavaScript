@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interval</title>
+  </head>
+  <body>
+    <h1>Chai or JavaScript</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    //setInterval baar baar execute hota given time ke baad
+
+    function newH1() {
+      const newH1 = document.querySelector("h1");
+      newH1.innerHTML = "Chai garam hai";
+      console.log("Rahul");
+    }
+    const changeMe = setInterval(newH1, 2000);
+
+    // stop button
+    document.querySelector("#stop").addEventListener("click", function (e) {
+      clearTimeout(changeMe); // it stop the execution
+      console.log("Stopped");
+    });
+    // start again
+    document.querySelector("#start").addEventListener("click", function (e) {
+      setInterval(newH1, 1000);
+      console.log("Run");
+    });
+  </script>
+</html>

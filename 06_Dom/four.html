@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    <ul class="addLanguage">
+      <li>JavaScript</li>
+    </ul>
+  </body>
+  <script>
+    //basic => it traverse whole html
+    function addLang(langName) {
+      const li = document.createElement("li");
+      li.innerHTML = `${langName}`;
+
+      document.querySelector(".addLanguage").appendChild(li);
+    }
+    addLang("python");
+    addLang("java");
+    addLang("Ruby");
+
+    //optimise => just add the creted node
+    function addOptimiseLang(langName) {
+      const li = document.createElement("li");
+      const addText = document.createTextNode(`${langName}`);
+      li.appendChild(addText);
+      document.querySelector(".addLanguage").appendChild(li);
+    }
+
+    addOptimiseLang("mongo");
+    addOptimiseLang("expressJs");
+
+    // Edit
+    const secLi = document.querySelector("li:nth-child(2)");
+    const newLi = document.createElement("li");
+    newLi.textContent = "goLang";
+    console.log(newLi);
+    secLi.replaceWith(newLi);
+
+    // Edit
+    const thirdLi = document.querySelector("li:nth-child(3)");
+    thirdLi.outerHTML = "<li>C++</li>";
+
+    // remove
+    const lastLi = document.querySelector("li:last-child");
+    lastLi.remove();
+  </script>
+</html>
